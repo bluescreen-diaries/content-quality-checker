@@ -145,8 +145,6 @@ content-quality-checker/
 ---
 
 
---- 4aea17c (added profanity filter and updated README)
-
 ---
 
 ## 👩‍💻 Author
