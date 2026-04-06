@@ -8,18 +8,10 @@
 
 This project was developed collaboratively with Claude (Anthropic) as an AI coding assistant. I'm a self-taught career changer transitioning into IT/digital content, not a professional developer. I have a working understanding of Python syntax and can read and somewhat modify the code and used Claude to help generate, explain, and refine the code throughout this project.
 
-What I brought to it:
-
-The original idea, use case, and requirements
-Architectural decisions
-Feature design and command layout
-Testing, troubleshooting
-
-
-What AI helped with:
-Writing and debugging Python code beyond my current skill level
-Translating my ideas into working implementations
-Explaining concepts as we built, so I could learn along the way
+ **Code:** Script generated with Claude and reviewed for correctness
+- **README:** Structure and copy written with Claude's help. I made additions and changes
+- **Concept & direction:** Designed by me, scoped to a real content operations use case
+- **Troubleshooting:** I tested and recommeded changes.
 
 I'm sharing this because I believe transparency about AI-assisted development matters, and because knowing how to effectively leverage AI tools is itself a real and valuable skill in 2026.
 
@@ -154,16 +146,6 @@ content-quality-checker/
 
 ---
 
-## 🤖 AI Disclosure
-
-This project was built with AI assistance via [Claude](https://claude.ai) (Anthropic).
-
-- **Code:** Script generated with Claude and reviewed for correctness
-- **README:** Structure and copy written with Claude's help
-- **Concept & direction:** Designed by me, scoped to a real content operations use case
-- **Testing & ownership:** I reviewed, understood, and take full responsibility for the code
-
-I believe in transparency about AI tool usage — this is how modern developers work, and I'm comfortable explaining every line of this code.
 
 >>>>>>> 4aea17c (added profanity filter and updated README)
 ---
