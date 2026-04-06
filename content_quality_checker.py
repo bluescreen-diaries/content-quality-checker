@@ -97,8 +97,6 @@ PROFANITY_PT = {
     "filho da puta", "filha da puta",
     "cu", "cuzão", "cuzinho",
     "cacete", "pau", "rola",
-    "desgraça", "desgraçado",
-    "inferno", "droga", "maldito",
     "idiota", "imbecil", "otário", "otária",
     "babaca", "corno", "corna",
 }
