@@ -140,15 +140,6 @@ content-quality-checker/
 
 ---
 
-## 💡 Potential Extensions
-
-- [ ] Export report to `.txt` or `.csv` file with `--output` flag
-- [ ] Add `--lang` flag to set expected language and flag deviations
-- [ ] Batch mode: scan an entire folder of `.txt` files at once
-- [ ] Integrate Claude API for AI-powered rewrite suggestions on flagged sentences
-
----
-
 ---
 
 ## 👩‍💻 Author
