@@ -134,20 +134,19 @@ content-quality-checker/
 
 ---
 
-<<<<<<< HEAD
-=======
+
+---
 ## 💡 Potential Extensions
 
 - [ ] Export report to `.txt` or `.csv` file with `--output` flag
 - [ ] Add `--lang` flag to set expected language and flag deviations
 - [ ] Batch mode: scan an entire folder of `.txt` files at once
-- [ ] Integrate Claude API for AI-powered rewrite suggestions on flagged sentences
-- [ ] Add reading level / Flesch-Kincaid score calculation
 
 ---
 
 
->>>>>>> 4aea17c (added profanity filter and updated README)
+--- 4aea17c (added profanity filter and updated README)
+
 ---
 
 ## 👩‍💻 Author
