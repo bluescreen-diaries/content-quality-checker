@@ -94,9 +94,10 @@ PROFANITY_PT = {
     "viado", "viadinho",
     "buceta", "xoxota",
     "puta", "putinha", "prostituta",
-    "filho da puta", "filha da puta",
     "cu", "cuzão", "cuzinho",
     "cacete", "pau", "rola",
+    "desgraça", "desgraçado",
+    "inferno", "droga", "maldito",
     "idiota", "imbecil", "otário", "otária",
     "babaca", "corno", "corna",
 }
