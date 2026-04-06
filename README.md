@@ -6,27 +6,28 @@
 
 🤖 A Note on How This Was Built
 
-This project was developed collaboratively with Claude (Anthropic) as an AI coding assistant. I'm a self-taught career changer transitioning into IT, not a professional developer. I have a working understanding of Python syntax and can read and somewhat modify the code and used Claude to help generate, explain, and refine the code throughout this project.
+This project was developed collaboratively with Claude (Anthropic) as an AI coding assistant. I'm a self-taught career changer transitioning into IT/digital content, not a professional developer. I have a working understanding of Python syntax and can read and somewhat modify the code and used Claude to help generate, explain, and refine the code throughout this project.
 
 What I brought to it:
 
 The original idea, use case, and requirements
-All architectural decisions
+Architectural decisions
 Feature design and command layout
 Testing, troubleshooting, and iteration based on real-world results
-Understanding the codebase well enough to use, explain, and extend it
+
 
 What AI helped with:
 Writing and debugging Python code beyond my current skill level
 Translating my ideas into working implementations
 Explaining concepts as we built, so I could learn along the way
+
 I'm sharing this because I believe transparency about AI-assisted development matters, and because knowing how to effectively leverage AI tools is itself a real and valuable skill in 2026.
 
 ---
 
 ## 🧠 Why This Exists
 
-Content operations teams review large volumes of text — podcast transcripts, ebook drafts, article copy — where quality issues like overused words, inconsistent terminology, or mixed-language content can slip through manual review. This tool automates that first-pass audit, flagging issues before content goes live.
+Content operations teams review large volumes of text, podcast transcripts, ebook drafts, article copy — where quality issues like overused words, inconsistent terminology, or mixed-language content can slip through manual review. This tool automates that first-pass audit, flagging issues before content goes live.
 
 ---
 
@@ -43,7 +44,7 @@ Content operations teams review large volumes of text — podcast transcripts, e
 
 ## 🚀 Usage
 
-No installation required — pure Python standard library.
+No installation required — all Python standard library.
 
 ```bash
 python content_quality_checker.py <file.txt> [options]
