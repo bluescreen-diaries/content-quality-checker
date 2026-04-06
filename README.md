@@ -39,6 +39,7 @@ Content operations teams review large volumes of text, podcast transcripts, eboo
 | ⚠️ **Inconsistent Capitalization** | Same term written as `podcast`, `Podcast`, and `PODCAST` |
 | 📏 **Long Sentences** | Sentences exceeding a word-count threshold (readability) |
 | 🌐 **Mixed Language** | Significant PT-BR and EN content mixed in the same document |
+| 🤬 **Profanity Filter** | Flagged terms in both EN and PT-BR, shown redacted with line numbers |
 
 ---
 
@@ -141,6 +142,30 @@ content-quality-checker/
 
 ---
 
+<<<<<<< HEAD
+=======
+## 💡 Potential Extensions
+
+- [ ] Export report to `.txt` or `.csv` file with `--output` flag
+- [ ] Add `--lang` flag to set expected language and flag deviations
+- [ ] Batch mode: scan an entire folder of `.txt` files at once
+- [ ] Integrate Claude API for AI-powered rewrite suggestions on flagged sentences
+- [ ] Add reading level / Flesch-Kincaid score calculation
+
+---
+
+## 🤖 AI Disclosure
+
+This project was built with AI assistance via [Claude](https://claude.ai) (Anthropic).
+
+- **Code:** Script generated with Claude and reviewed for correctness
+- **README:** Structure and copy written with Claude's help
+- **Concept & direction:** Designed by me, scoped to a real content operations use case
+- **Testing & ownership:** I reviewed, understood, and take full responsibility for the code
+
+I believe in transparency about AI tool usage — this is how modern developers work, and I'm comfortable explaining every line of this code.
+
+>>>>>>> 4aea17c (added profanity filter and updated README)
 ---
 
 ## 👩‍💻 Author

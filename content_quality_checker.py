@@ -6,6 +6,7 @@ Reads a .txt file and outputs a content quality report flagging:
   - Inconsistent capitalization of key terms
   - Sentences that are too long (readability flag)
   - Mixed language signals (PT-BR vs EN words in the same doc)
+  - Profanity / flagged terms (EN and PT-BR, shown redacted)
 
 Zero API cost. Works offline. Pure Python standard library only.
 
@@ -67,6 +68,42 @@ STOPWORDS_EN = {
 }
 
 STOPWORDS = STOPWORDS_PT | STOPWORDS_EN
+
+
+# ─────────────────────────────────────────────
+# Profanity / flagged terms (EN + PT-BR)
+# ─────────────────────────────────────────────
+
+PROFANITY_EN = {
+    "fuck", "fucker", "fucking", "fucked", "fucks",
+    "shit", "shitty", "shitting", "bullshit",
+    "bitch", "bitches", "bitchy",
+    "ass", "asshole", "assholes", "asses",
+    "damn", "damned", "dammit",
+    "crap", "crappy",
+    "dick", "dicks", "cock", "cocks",
+    "bastard", "bastards",
+    "hell", "piss", "pissed", "pussy",
+    "cunt", "whore", "slut",
+    "motherfucker", "motherfucking",
+}
+
+PROFANITY_PT = {
+    "porra", "caralho", "foda", "foder", "fodase",
+    "merda", "bosta",
+    "viado", "viadinho",
+    "buceta", "xoxota",
+    "puta", "putinha", "prostituta",
+    "filho da puta", "filha da puta",
+    "cu", "cuzão", "cuzinho",
+    "cacete", "pau", "rola",
+    "desgraça", "desgraçado",
+    "inferno", "droga", "maldito",
+    "idiota", "imbecil", "otário", "otária",
+    "babaca", "corno", "corna",
+}
+
+PROFANITY_ALL = PROFANITY_EN | PROFANITY_PT
 
 
 # ─────────────────────────────────────────────
@@ -184,6 +221,41 @@ def check_language_mix(words: list[str]) -> dict:
     }
 
 
+def redact(word: str) -> str:
+    """Redact middle characters of a word: 'fuck' → 'f**k'"""
+    if len(word) <= 2:
+        return word[0] + "*"
+    return word[0] + "*" * (len(word) - 2) + word[-1]
+
+
+def check_profanity(text: str) -> list[dict]:
+    """
+    Scan for profanity in both EN and PT-BR.
+    Returns each hit with its line number, redacted form, and surrounding context.
+    """
+    hits = []
+    lines = text.splitlines()
+
+    for line_num, line in enumerate(lines, 1):
+        # Tokenize preserving original casing for context
+        tokens = re.findall(r"\b[\w'áàãâéêíóôõúçñü]+\b", line, re.IGNORECASE)
+        for token in tokens:
+            if token.lower() in PROFANITY_ALL:
+                # Grab up to 60 chars of context around the word
+                start  = max(line.lower().find(token.lower()) - 20, 0)
+                snippet = line[start:start + 60].strip()
+                if len(snippet) == 60:
+                    snippet += "..."
+                hits.append({
+                    "line":    line_num,
+                    "word":    token,
+                    "redacted": redact(token),
+                    "context": snippet,
+                })
+
+    return hits
+
+
 # ─────────────────────────────────────────────
 # Report printer
 # ─────────────────────────────────────────────
@@ -195,6 +267,7 @@ def print_report(
     cap_issues:  list,
     long_sents:  list,
     lang_mix:    dict,
+    profanity:   list,
     threshold:   int,
     max_words:   int,
 ) -> None:
@@ -271,6 +344,17 @@ def print_report(
         print(f"  ⚠️  Could not determine language (too few signal words).")
     print()
 
+    # ── 5. Profanity ──────────────────────────────────
+    print(f"{div}")
+    print(f"  🤬  PROFANITY / FLAGGED TERMS")
+    print(f"{div}")
+    if profanity:
+        for hit in profanity:
+            print(f"  Line {hit['line']:<6} {hit['redacted']:<15}  ↳ ...{hit['context']}...")
+    else:
+        print(f"  ✅  No profanity or flagged terms found.")
+    print()
+
     # ── Summary ───────────────────────────────────────
     print(f"{div2}")
     issues = sum([
@@ -278,6 +362,7 @@ def print_report(
         len(cap_issues) > 0,
         len(long_sents) > 0,
         lang_mix["mix_flag"],
+        len(profanity) > 0,
     ])
     if issues == 0:
         print(f"  ✅  All checks passed. Content looks clean!")
@@ -305,20 +390,22 @@ def main():
     words     = tokenize_words(text)
     sentences = split_sentences(text)
 
-    overused  = check_overused_words(words, args.threshold, args.top)
-    cap_issues= check_capitalization(text)
-    long_sents= check_long_sentences(sentences, args.max_words)
-    lang_mix  = check_language_mix(words)
+    overused   = check_overused_words(words, args.threshold, args.top)
+    cap_issues = check_capitalization(text)
+    long_sents = check_long_sentences(sentences, args.max_words)
+    lang_mix   = check_language_mix(words)
+    profanity  = check_profanity(text)
 
     print_report(
-        filepath  = args.file,
-        text      = text,
-        overused  = overused,
-        cap_issues= cap_issues,
-        long_sents= long_sents,
-        lang_mix  = lang_mix,
-        threshold = args.threshold,
-        max_words = args.max_words,
+        filepath   = args.file,
+        text       = text,
+        overused   = overused,
+        cap_issues = cap_issues,
+        long_sents = long_sents,
+        lang_mix   = lang_mix,
+        profanity  = profanity,
+        threshold  = args.threshold,
+        max_words  = args.max_words,
     )
 
 
