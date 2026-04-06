@@ -13,7 +13,7 @@ What I brought to it:
 The original idea, use case, and requirements
 Architectural decisions
 Feature design and command layout
-Testing, troubleshooting, and iteration based on real-world results
+Testing, troubleshooting
 
 
 What AI helped with:
@@ -27,7 +27,7 @@ I'm sharing this because I believe transparency about AI-assisted development ma
 
 ## 🧠 Why This Exists
 
-Content operations teams review large volumes of text, podcast transcripts, ebook drafts, article copy — where quality issues like overused words, inconsistent terminology, or mixed-language content can slip through manual review. This tool automates that first-pass audit, flagging issues before content goes live.
+Content operations teams review large volumes of text, podcast transcripts, ebook drafts, article copy, where quality issues like overused words, inconsistent terminology, or mixed-language content can slip through manual review. This tool automates that first-pass audit, flagging issues before content goes live.
 
 ---
 
